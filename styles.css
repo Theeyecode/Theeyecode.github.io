@@ -1,0 +1,25 @@
+body {
+  scroll-behavior: smooth;
+}
+
+nav a {
+  transition: color 0.3s ease;
+}
+
+section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+form input,
+form textarea {
+  transition: border-color 0.3s ease;
+}
+
+form input:focus,
+form textarea:focus {
+  outline: none;
+  border-color: #2563eb;
+}
