@@ -3,134 +3,537 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Portfolio</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Emmanuel Olajubu — Data Engineer & Senior Software Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;1,300&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body class="bg-gray-100 font-sans">
-  <!-- Header -->
-  <header class="bg-blue-600 text-white sticky top-0 shadow-md">
-    <nav class="container mx-auto flex justify-between items-center py-4 px-6">
-      <h1 class="text-2xl font-bold">My Portfolio</h1>
-      <ul class="flex space-x-6">
-        <li><a href="#home" class="hover:text-gray-300">Home</a></li>
-        <li><a href="#about" class="hover:text-gray-300">About</a></li>
-        <li><a href="#projects" class="hover:text-gray-300">Projects</a></li>
-        <li><a href="#skills" class="hover:text-gray-300">Skills</a></li>
-        <li><a href="#contact" class="hover:text-gray-300">Contact</a></li>
+<body>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <span class="nav-logo">EO<span class="dot">.</span></span>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#data">Data</a></li>
+        <li><a href="#mobile">Mobile</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#contact" class="nav-cta">Hire Me</a></li>
       </ul>
-    </nav>
-  </header>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
 
-  <!-- Hero Section -->
-  <section id="home" class="bg-blue-500 text-white py-20 text-center">
-    <div class="container mx-auto px-6">
-      <h2 class="text-4xl font-bold mb-4">Welcome to My Portfolio</h2>
-      <p class="text-lg mb-6">Hi, I'm Emmanuel Olajubu, a passionate developer showcasing my work and skills.</p>
-      <a href="#projects" class="bg-white text-blue-600 px-6 py-2 rounded-full font-semibold hover:bg-gray-200">View Projects</a>
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <ul>
+      <li><a href="#about" class="mob-link">About</a></li>
+      <li><a href="#data" class="mob-link">Data</a></li>
+      <li><a href="#mobile" class="mob-link">Mobile</a></li>
+      <li><a href="#experience" class="mob-link">Experience</a></li>
+      <li><a href="#contact" class="mob-link">Hire Me</a></li>
+    </ul>
+  </div>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg">
+      <div class="grid-overlay"></div>
+      <div class="noise-overlay"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-badge reveal">
+        <span class="badge-dot"></span>
+        Available for opportunities
+      </div>
+      <h1 class="hero-name reveal">
+        <span class="line">Emmanuel</span>
+        <span class="line">Olajubu<span class="accent">.</span></span>
+      </h1>
+      <p class="hero-title reveal">
+        <span class="mono">Data Engineer</span>
+        <span class="sep">×</span>
+        <span class="mono">Senior Software Engineer</span>
+      </p>
+      <p class="hero-tagline reveal">
+        Software Engineer by trade, Data Architect by design.<br>
+        I understand how data is captured at the edge and transformed at the core —<br>
+        I build robust pipelines with the empathy of a front-end developer.
+      </p>
+      <div class="hero-certs reveal">
+        <span class="cert-tag">Databricks Certified</span>
+        <span class="cert-tag">MSc Data Analytics</span>
+        <span class="cert-tag">dbt Fundamentals</span>
+        <span class="cert-tag">GDG Organizer</span>
+      </div>
+      <div class="hero-actions reveal">
+        <a href="#data" class="btn-primary">View Data Work</a>
+        <a href="#mobile" class="btn-ghost">Mobile Portfolio</a>
+      </div>
+      <div class="hero-scroll reveal">
+        <span class="mono small">scroll to explore</span>
+        <div class="scroll-line"></div>
+      </div>
+    </div>
+    <div class="hero-stats reveal">
+      <div class="stat">
+        <span class="stat-num">5+</span>
+        <span class="stat-label">Years Mobile</span>
+      </div>
+      <div class="stat-div"></div>
+      <div class="stat">
+        <span class="stat-num">20K+</span>
+        <span class="stat-label">App Installs Led</span>
+      </div>
+      <div class="stat-div"></div>
+      <div class="stat">
+        <span class="stat-num">98%</span>
+        <span class="stat-label">Pipeline Accuracy</span>
+      </div>
+      <div class="stat-div"></div>
+      <div class="stat">
+        <span class="stat-num">4.2</span>
+        <span class="stat-label">MSc GPA</span>
+      </div>
     </div>
   </section>
 
-  <!-- About Section -->
-  <section id="about" class="py-16">
-    <div class="container mx-auto px-6">
-      <h2 class="text-3xl font-bold text-center mb-8">About Me</h2>
-      <p class="text-lg text-gray-700 max-w-2xl mx-auto">As a Mobile Application Developer and Data Analyst, I'm passionate about building functional and visually appealing applications. I specialize in Flutter and data analysis, and in my free time, I enjoy Basketball.</p>
+  <!-- QUOTE -->
+  <section class="quote-section">
+    <div class="quote-inner">
+      <span class="quote-mark">"</span>
+      <blockquote>The world is full of obvious things which nobody by any chance ever observes.</blockquote>
+      <cite>— Sir Arthur Conan Doyle</cite>
     </div>
   </section>
 
-  <!-- Projects Section -->
-  <section id="projects" class="bg-gray-200 py-16">
-    <div class="container mx-auto px-6">
-      <h2 class="text-3xl font-bold text-center mb-8">My Projects</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <div class="bg-white p-6 rounded-lg shadow-md">
-          <h3 class="text-xl font-semibold mb-2">SwyftPay</h3>
-          <p class="text-gray-600 mb-4">Swyft provides a fast, affordable, and secure payment solution that enables users to transact in local Nigerian Naira and receive money in USD, GBP, EUR and digital currencies.. Built with Flutter.</p>
-          <a href="https://www.swyftpay.io/" class="text-blue-600 hover:underline">View Project</a>
-        </div>
-        <div class="bg-white p-6 rounded-lg shadow-md">
-          <h3 class="text-xl font-semibold mb-2">Superstars</h3>
-          <p class="text-gray-600 mb-4">A next-Gen platform combining a Professioinal Network, jobs Board, Talent Board.</p>
-          <a href="https://superstars.co/" class="text-blue-600 hover:underline">View Project</a>
-        </div>
-        <div class="bg-white p-6 rounded-lg shadow-md">
-          <h3 class="text-xl font-semibold mb-2">Rebake</h3>
-          <p class="text-gray-600 mb-4">Bringing together like-minded conscious individuals to rethink & reshape the way they bake.</p>
-          <a href="https://www.rebake.co/" class="text-blue-600 hover:underline">View Project</a>
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-inner">
+      <div class="section-label">
+        <span class="mono">01 / About</span>
+      </div>
+      <div class="about-grid">
+        <div class="about-text">
+          <h2 class="section-title">Full-Cycle<br>Engineer<span class="accent">.</span></h2>
+          <p>I'm a Data Engineer and Senior Software Engineer based in Ontario, Canada. My path from Flutter mobile development to cloud-native data engineering gives me something rare: I know exactly how data gets created at the product layer, and I know how to build the infrastructure that makes it useful at scale.</p>
+          <p>Currently pursuing high-impact data roles while continuing to architect production-grade systems. I hold an MSc in Data Analytics from the University of Niagara Falls (GPA 4.2) and a BSc in Computer Science from Obafemi Awolowo University.</p>
+          <p>I've shipped apps used by millions, designed ETL pipelines with 98% extraction accuracy, and led Google Developer Groups on campus. I don't just build things — I build things that last.</p>
+          <div class="about-links">
+            <a href="https://github.com/Theeyecode" target="_blank" class="icon-link">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              GitHub
+            </a>
+            <a href="https://www.linkedin.com/in/emmanuel-olajubu" target="_blank" class="icon-link">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              LinkedIn
+            </a>
           </div>
-
-          <div class="bg-white p-6 rounded-lg shadow-md">
-          <h3 class="text-xl font-semibold mb-2">Electricity-Forecasting-and-Optimization</h3>
-          <p class="text-gray-600 mb-4">Electricity Forecasting and Optimization with IEA Data: A Renewable Energy Strategy This project leverages global electricity data from the International Energy Agency (IEA) alongside GDP and population data to explore, forecast, and optimize electricity consumption across countries from 2010 to 2025.</p>
-          <a href="https://github.com/Theeyecode/Electricity-Forecasting-and-Optimization" class="text-blue-600 hover:underline">View Project</a>
-         </div>
-        
-         <div class="bg-white p-6 rounded-lg shadow-md">
-          <h3 class="text-xl font-semibold mb-2">PESTEL Analysis of Tesla, Inc</h3>
-          <p class="text-gray-600 mb-4">This project explores how external macro-environmental factors—captured through the PESTEL framework—affect Tesla's global supply chain operations. The analysis is part of a broader research project structured in two phases.</p>
-          <a href="https://github.com/Theeyecode/pestel_analysis_TESLA/tree/main" class="text-blue-600 hover:underline">View Project</a>
-
-          <div class="bg-white p-6 rounded-lg shadow-md">
-          <h3 class="text-xl font-semibold mb-2">Beebz</h3>
-          <p class="text-gray-600 mb-4">Beebz is your go-to app for booking premium rides for any kind of event or personal travel. Whether you're planning a birthday bash, attending a wedding, or just need a stylish ride across town, Beebz connects you with trusted transport operators offering a variety of vehicles tailored to your needs.</p>
-          <a href="https://apps.apple.com/ca/app/beebz/id1632554023" class="text-blue-600 hover:underline">View Project</a>
-        
+        </div>
+        <div class="about-skills">
+          <div class="skills-block">
+            <h4 class="skills-heading">Data Engineering</h4>
+            <div class="skill-tags">
+              <span>Python</span><span>SQL</span><span>dbt</span><span>Apache Airflow</span>
+              <span>BigQuery</span><span>GCP</span><span>AWS</span><span>Databricks</span>
+              <span>PySpark</span><span>Snowflake</span><span>ETL/ELT</span><span>Docker</span>
+            </div>
+          </div>
+          <div class="skills-block">
+            <h4 class="skills-heading">Analytics & Viz</h4>
+            <div class="skill-tags">
+              <span>Power BI</span><span>Looker</span><span>Tableau</span>
+              <span>Pandas</span><span>NumPy</span><span>scikit-learn</span>
+            </div>
+          </div>
+          <div class="skills-block">
+            <h4 class="skills-heading">Mobile Engineering</h4>
+            <div class="skill-tags">
+              <span>Flutter</span><span>Dart</span><span>iOS</span><span>Android</span>
+              <span>BLoC</span><span>Riverpod</span><span>Clean Arch</span><span>CI/CD</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Skills Section -->
-  <section id="skills" class="py-16">
-    <div class="container mx-auto px-6">
-      <h2 class="text-3xl font-bold text-center mb-8">My Skills</h2>
-      <div class="flex flex-wrap justify-center gap-4">
-        <span class="bg-blue-600 text-white px-4 py-2 rounded-full">Flutter</span>
-        <span class="bg-blue-600 text-white px-4 py-2 rounded-full">Dart</span>
-        <span class="bg-blue-600 text-white px-4 py-2 rounded-full">Python</span>
-        <span class="bg-blue-600 text-white px-4 py-2 rounded-full">SQL</span>
-        <span class="bg-blue-600 text-white px-4 py-2 rounded-full">Tableau</span>
-        <span class="bg-blue-600 text-white px-4 py-2 rounded-full">Powerbi</span>
-        <span class="bg-blue-600 text-white px-4 py-2 rounded-full">Machine Learning</span>
-        <span class="bg-blue-600 text-white px-4 py-2 rounded-full">Artificial Intelligence</span>
-        <span class="bg-blue-600 text-white px-4 py-2 rounded-full">Large Language Model</span>
-        <span class="bg-blue-600 text-white px-4 py-2 rounded-full">Data Analysis</span>
-        <span class="bg-blue-600 text-white px-4 py-2 rounded-full">Azure Database Administrator</span>
-        <span class="bg-blue-600 text-white px-4 py-2 rounded-full">Android & IOS</span>
+  <!-- DATA PROJECTS -->
+  <section id="data">
+    <div class="section-inner">
+      <div class="section-label">
+        <span class="mono">02 / Data Engineering & Analytics</span>
+      </div>
+      <h2 class="section-title">Data<br>Work<span class="accent">.</span></h2>
+
+      <!-- FEATURED PROJECT: Roamlii -->
+      <div class="project-featured">
+        <div class="project-featured-label">
+          <span class="mono small">Featured · Production</span>
+        </div>
+        <div class="project-featured-inner">
+          <div class="project-featured-text">
+            <h3>Roamlii — Tourism Intelligence Platform</h3>
+            <p class="project-role">Data Engineer · Python · GCP · BigQuery · Firecrawl</p>
+            <p>Built a cloud-native data pipeline that automatically ingests, cleans, and structures tourism events, festivals, and sports data across North America. Designed an end-to-end ingestion system with LLM-based validation and YAML-configured scrapers, achieving 98% extraction accuracy and cutting debugging time by over 40%.</p>
+            <ul class="impact-list">
+              <li><span class="impact-icon">↗</span> Fully automated scraping → GCS → BigQuery pipeline via Cloud Run Jobs</li>
+              <li><span class="impact-icon">↗</span> 98% extraction accuracy with modular Python adapters</li>
+              <li><span class="impact-icon">↗</span> 60+ event sources processed via modular site-config architecture</li>
+              <li><span class="impact-icon">↗</span> Redis distributed locking + run-level monitoring for reliability at scale</li>
+            </ul>
+            <div class="tech-stack">
+              <span>Python</span><span>GCP</span><span>BigQuery</span><span>Cloud Run</span>
+              <span>Firecrawl</span><span>Redis</span><span>SQL</span><span>Docker</span>
+            </div>
+            <a href="https://lookerstudio.google.com/reporting/39b5f851-b26e-4e9a-b1fb-9deb3cdfd915/page/UVGeF" target="_blank" class="project-link">View Dashboard →</a>
+          </div>
+          <div class="project-featured-metrics">
+            <div class="metric-card">
+              <span class="metric-num">98%</span>
+              <span class="metric-label">Extraction Accuracy</span>
+            </div>
+            <div class="metric-card">
+              <span class="metric-num">40%</span>
+              <span class="metric-label">Reduced Debug Time</span>
+            </div>
+            <div class="metric-card">
+              <span class="metric-num">60+</span>
+              <span class="metric-label">Event Sources</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJECT GRID -->
+      <div class="projects-grid">
+
+        <div class="project-card" data-index="01">
+          <div class="project-card-header">
+            <span class="project-type mono">Machine Learning</span>
+            <a href="https://github.com/Theeyecode/Car_price_prediction" target="_blank" class="project-arrow">↗</a>
+          </div>
+          <h3>Car Price Prediction Model</h3>
+          <p>End-to-end ML pipeline predicting vehicle prices across 400K+ records using Random Forest ensemble methods. Data cleaning, feature engineering, model training, and evaluation — the full stack of applied ML.</p>
+          <div class="project-metrics-row">
+            <div class="pm"><span class="pm-num">96.49%</span><span class="pm-label">R² Accuracy</span></div>
+            <div class="pm"><span class="pm-num">0.12</span><span class="pm-label">MAE</span></div>
+            <div class="pm"><span class="pm-num">400K+</span><span class="pm-label">Records</span></div>
+          </div>
+          <div class="tech-stack small">
+            <span>Python</span><span>scikit-learn</span><span>Random Forest</span><span>Pandas</span>
+          </div>
+        </div>
+
+        <div class="project-card" data-index="02">
+          <div class="project-card-header">
+            <span class="project-type mono">Forecasting & Optimization</span>
+            <a href="https://github.com/Theeyecode/Electricity-Forecasting-and-Optimization" target="_blank" class="project-arrow">↗</a>
+          </div>
+          <h3>Electricity Forecasting & Optimization</h3>
+          <p>Leveraged IEA global electricity data alongside GDP and population indicators to forecast monthly consumption from 2010–2025. Prescriptive analytics layer recommends optimal energy source allocation across countries — bridging prediction with real-world decision support.</p>
+          <div class="tech-stack small">
+            <span>Python</span><span>Time-Series</span><span>IEA Data</span><span>Feature Engineering</span>
+          </div>
+        </div>
+
+        <div class="project-card" data-index="03">
+          <div class="project-card-header">
+            <span class="project-type mono">Operations Research</span>
+            <a href="https://github.com/Theeyecode/Optimizing-Public-Bus-Network-Scheduling" target="_blank" class="project-arrow">↗</a>
+          </div>
+          <h3>Public Bus Network Scheduling Optimization</h3>
+          <p>Demand-oriented optimization of urban bus scheduling using Linear and Mixed Integer Programming across 93 routes and 4 daily shifts. Eliminated over-capacity surges and delivered measurable cost reduction at city scale.</p>
+          <div class="project-metrics-row">
+            <div class="pm"><span class="pm-num">13.74%</span><span class="pm-label">Cost Reduction</span></div>
+            <div class="pm"><span class="pm-num">$45K</span><span class="pm-label">Monthly Savings</span></div>
+            <div class="pm"><span class="pm-num">89.8%</span><span class="pm-label">Peak Util.</span></div>
+          </div>
+          <div class="tech-stack small">
+            <span>Python</span><span>OR-Tools</span><span>SCIP</span><span>Linear Programming</span>
+          </div>
+        </div>
+
+        <div class="project-card" data-index="04">
+          <div class="project-card-header">
+            <span class="project-type mono">Workflow Orchestration</span>
+            <a href="https://github.com/Theeyecode/First-DataPipeline-Airflow.git" target="_blank" class="project-arrow">↗</a>
+          </div>
+          <h3>Automated Workflow Orchestration — Apache Airflow</h3>
+          <p>Production-ready DAG design using the TaskFlow API to automate complex ETL processes across Python scripts and SQL transformations. External Task Sensors synchronize pipelines across sources; XComs and Dynamic Task Generation handle variable data loads with zero manual intervention.</p>
+          <div class="project-metrics-row">
+            <div class="pm"><span class="pm-num">100%</span><span class="pm-label">Automation</span></div>
+          </div>
+          <div class="tech-stack small">
+            <span>Apache Airflow</span><span>Python</span><span>Docker</span><span>ETL</span>
+          </div>
+        </div>
+
+        <div class="project-card" data-index="05">
+          <div class="project-card-header">
+            <span class="project-type mono">Business Intelligence</span>
+            <a href="https://github.com/Theeyecode/pestel_analysis_TESLA" target="_blank" class="project-arrow">↗</a>
+          </div>
+          <h3>PESTEL Analysis — Tesla, Inc.</h3>
+          <p>Data-driven PESTEL study mapping how trade flows, emissions pressure, political stability, and battery mineral dependency (lithium, cobalt, nickel, manganese) shape Tesla's global supply chain from 2010–2020. Delivered via multi-page Power BI dashboard integrating World Bank and UN Comtrade datasets.</p>
+          <div class="tech-stack small">
+            <span>Power BI</span><span>Excel</span><span>World Bank</span><span>UN Comtrade</span>
+          </div>
+        </div>
+
+        <div class="project-card" data-index="06">
+          <div class="project-card-header">
+            <span class="project-type mono">Analytics Pipeline</span>
+            <a href="https://github.com/Theeyecode/DemoRepo-Databricks-" target="_blank" class="project-arrow">↗</a>
+          </div>
+          <h3>Databricks Data Engineering — Certified Demo</h3>
+          <p>Hands-on implementation covering Delta Lake, Unity Catalog, Structured Streaming, and production-grade notebook patterns — aligned with Databricks Data Engineer Associate certification standards. Built as a reference repo demonstrating real-world Lakehouse architecture patterns.</p>
+          <div class="tech-stack small">
+            <span>Databricks</span><span>PySpark</span><span>Delta Lake</span><span>Unity Catalog</span>
+          </div>
+        </div>
+
+        <div class="project-card" data-index="07">
+          <div class="project-card-header">
+            <span class="project-type mono">Mobility Analytics</span>
+            <a href="https://github.com/Theeyecode" target="_blank" class="project-arrow">↗</a>
+          </div>
+          <h3>Toronto Bike Share Analytics</h3>
+          <p>Interactive analytics tool transforming Toronto bike-share trip data into decision-ready insights on demand patterns, rider behavior, and station utilization. Built the data foundation and analytics pipeline — cleaning, feature engineering, reusable transformations — then delivered a multi-page Streamlit dashboard. Followed production Agile practices with automated testing and disciplined Git workflow.</p>
+          <div class="tech-stack small">
+            <span>Python</span><span>Pandas</span><span>Streamlit</span><span>Git</span>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
 
-  <!-- Contact Section -->
-  <section id="contact" class="bg-gray-200 py-16">
-    <div class="container mx-auto px-6">
-      <h2 class="text-3xl font-bold text-center mb-8">Get in Touch</h2>
-      <form id="contact-form" class="max-w-lg mx-auto">
-        <div class="mb-4">
-          <label for="name" class="block text-gray-700 mb-2">Name</label>
-          <input type="text" id="name" class="w-full p-2 border rounded" required>
+  <!-- MOBILE SECTION -->
+  <section id="mobile">
+    <div class="section-inner">
+      <div class="section-label">
+        <span class="mono">03 / Mobile Engineering</span>
+      </div>
+      <h2 class="section-title">5 Years<br>Mobile<span class="accent">.</span></h2>
+      <p class="section-intro">Before data, I spent five years shipping Flutter applications at scale — from fintech apps processing millions in transactions to social platforms with tens of thousands of users. That foundation shapes how I think about every system I build.</p>
+
+      <div class="mobile-grid">
+
+        <div class="mobile-card featured-mobile">
+          <div class="mobile-card-header">
+            <span class="mono small">Lead Engineer · Fintech</span>
+            <a href="https://www.swyftpay.io/" target="_blank" class="project-arrow">↗</a>
+          </div>
+          <h3>SwyftPay — Lead Mobile Engineer</h3>
+          <p class="mobile-meta">Swerv, Nigeria · Aug 2022 – Sep 2025</p>
+          <p>Led mobile development for SwyftPay's fintech product — virtual account systems, clean architecture, multi-currency payment flows. Integrated an agentic AI module to automate funding suggestions. Drove an 80% increase in user engagement and reduced complaints by 25%.</p>
+          <div class="project-metrics-row">
+            <div class="pm"><span class="pm-num">20K+</span><span class="pm-label">App Installs</span></div>
+            <div class="pm"><span class="pm-num">80%</span><span class="pm-label">Engagement ↑</span></div>
+            <div class="pm"><span class="pm-num">25%</span><span class="pm-label">Complaints ↓</span></div>
+          </div>
+          <div class="tech-stack small">
+            <span>Flutter</span><span>Dart</span><span>Clean Arch</span><span>Finance APIs</span><span>AI Module</span>
+          </div>
         </div>
-        <div class="mb-4">
-          <label for="email" class="block text-gray-700 mb-2">Email</label>
-          <input type="email" id="email" class="w-full p-2 border rounded" required>
+
+        <div class="mobile-card">
+          <div class="mobile-card-header">
+            <span class="mono small">Product Engineer · Maps & Events</span>
+            <span class="badge-live">Current</span>
+          </div>
+          <h3>Turning — Product Engineer</h3>
+          <p class="mobile-meta">USA · March 2025 – Present</p>
+          <p>Leading mobile and building advanced features including an interactive MapLibre GL events map with custom photo markers (canvas-rendered + cached) and Radar-powered search. Architected a scalable Riverpod feed with debounced queries, cursor pagination, and production-ready states. CI/CD via Fastlane + GitHub Actions with weekly release cadence.</p>
+          <div class="tech-stack small">
+            <span>Flutter</span><span>Riverpod</span><span>MapLibre</span><span>AWS</span><span>Fastlane</span>
+          </div>
         </div>
-        <div class="mb-4">
-          <label for="message" class="block text-gray-700 mb-2">Message</label>
-          <textarea id="message" class="w-full p-2 border rounded" rows="5" required></textarea>
+
+        <div class="mobile-card">
+          <div class="mobile-card-header">
+            <span class="mono small">Mentor · 5K+ Users</span>
+            <a href="https://apps.apple.com/ca/app/superstars-business-network/id1606509335" target="_blank" class="project-arrow">↗</a>
+          </div>
+          <h3>Superstars — Flutter Dev Mentor</h3>
+          <p class="mobile-meta">USA · Oct 2024 – Mar 2025</p>
+          <p>Guided a 5K+ user developer cohort through real app development challenges. Architected a clean, modular codebase with detailed technical documentation improving scalability by 60%. Integrated Node.js APIs on AWS (EC2, S3, API Gateway).</p>
+          <div class="tech-stack small">
+            <span>Flutter</span><span>BLoC</span><span>Node.js</span><span>AWS</span>
+          </div>
         </div>
-        <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700">Send Message</button>
-      </form>
+
+        <div class="mobile-card">
+          <div class="mobile-card-header">
+            <span class="mono small">Banking · Nigeria</span>
+            <a href="https://apps.apple.com/ca/app/vulte/id1541640258" target="_blank" class="project-arrow">↗</a>
+          </div>
+          <h3>VULTe — Polaris Bank</h3>
+          <p class="mobile-meta">Lagos · Dec 2023 – Mar 2024</p>
+          <p>Built core features of VULTe, a digital banking app serving millions of users with secure everyday banking tools. Developed a recommendation system suggesting products based on transactional history, enhancing personalized engagement.</p>
+          <div class="tech-stack small">
+            <span>Flutter</span><span>Azure DevOps</span><span>Banking APIs</span>
+          </div>
+        </div>
+
+        <div class="mobile-card">
+          <div class="mobile-card-header">
+            <span class="mono small">Marketplace · UK</span>
+            <a href="https://www.rebake.co/" target="_blank" class="project-arrow">↗</a>
+          </div>
+          <h3>Rebake — Mobile Developer</h3>
+          <p class="mobile-meta">UK · Mar – Jun 2024</p>
+          <p>Peer-to-peer bakeware marketplace connecting enthusiasts. Implemented a reliable design system and testable auth with Freezed, Riverpod, and Clean Architecture. Applied Firebase Analytics + A/B testing for data-driven UX refinement.</p>
+          <div class="tech-stack small">
+            <span>Flutter</span><span>Riverpod</span><span>Firebase</span><span>Clean Arch</span>
+          </div>
+        </div>
+
+      </div>
     </div>
   </section>
 
-<!-- Footer -->
-<footer class="bg-blue-600 text-white py-4 text-center">
-  <p>© 2025 Emmanuel Olajubu. All rights reserved.</p>
-</footer>
+  <!-- EXPERIENCE TIMELINE -->
+  <section id="experience">
+    <div class="section-inner">
+      <div class="section-label">
+        <span class="mono">04 / Experience</span>
+      </div>
+      <h2 class="section-title">Track<br>Record<span class="accent">.</span></h2>
+      <div class="timeline">
 
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-<script src="script.js"></script>
+        <div class="timeline-item">
+          <div class="timeline-meta">
+            <span class="mono small">Jan 2026 – Present</span>
+            <span class="tl-tag">Data</span>
+          </div>
+          <div class="timeline-body">
+            <h3>Independent Data Engineering Consultant</h3>
+            <p class="tl-location">Canada</p>
+            <p>Designing and building end-to-end data workflows — Airflow DAGs, dbt transformation pipelines, BigQuery schemas, and GCP/AWS cloud infrastructure. Implementing data validation, schema enforcement, and analytics-ready datasets for reporting use cases.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-meta">
+            <span class="mono small">Mar 2025 – Present</span>
+            <span class="tl-tag">Mobile</span>
+          </div>
+          <div class="timeline-body">
+            <h3>Product Engineer (Flutter)</h3>
+            <p class="tl-location">Turning, USA</p>
+            <p>Leading mobile features including interactive MapLibre mapping, Riverpod architecture, and AWS-integrated real-time event sync. Weekly CI/CD releases via Fastlane.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-meta">
+            <span class="mono small">Sep 2024 – Jan 2026</span>
+            <span class="tl-tag">Data</span>
+          </div>
+          <div class="timeline-body">
+            <h3>Data Engineer Intern</h3>
+            <p class="tl-location">Roamlii, Canada</p>
+            <p>Built ETL pipelines ingesting web data into BigQuery. Architected LLM-based validation scrapers. 98% extraction accuracy. Collaborated on GCP pipeline design and Looker Studio dashboards.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-meta">
+            <span class="mono small">Aug 2022 – Sep 2025</span>
+            <span class="tl-tag">Mobile</span>
+          </div>
+          <div class="timeline-body">
+            <h3>Lead Mobile Engineer</h3>
+            <p class="tl-location">Swerv (SwyftPay), Nigeria</p>
+            <p>Led Flutter development for a fintech product with 20K+ installs. Integrated agentic AI for funding automation. 80% engagement increase, 25% complaint reduction.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-meta">
+            <span class="mono small">2024 – 2025</span>
+            <span class="tl-tag">MSc</span>
+          </div>
+          <div class="timeline-body">
+            <h3>MSc Data Analytics — GPA 4.2</h3>
+            <p class="tl-location">University of Niagara Falls, Canada</p>
+            <p>GDG Organizer on campus. Completed certifications: Databricks Data Engineer Associate, dbt Fundamentals. Microsoft Fabric in progress.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-inner">
+      <div class="section-label">
+        <span class="mono">05 / Contact</span>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-text">
+          <h2 class="section-title">Let's<br>Build<span class="accent">.</span></h2>
+          <p>I'm actively looking for Data Engineering roles, and open to select Senior Flutter opportunities. If you're working on something ambitious, I'd like to hear about it.</p>
+          <div class="contact-info">
+            <a href="mailto:emmanuelolajubu90@gmail.com" class="contact-item">
+              <span class="mono small">Email</span>
+              <span>emmanuelolajubu90@gmail.com</span>
+            </a>
+            <a href="tel:+16478193099" class="contact-item">
+              <span class="mono small">Phone</span>
+              <span>+1 (647) 819-3099</span>
+            </a>
+            <div class="contact-item no-link">
+              <span class="mono small">Location</span>
+              <span>Ontario, Canada</span>
+            </div>
+          </div>
+          <div class="contact-social">
+            <a href="https://github.com/Theeyecode" target="_blank" class="btn-ghost small">GitHub →</a>
+            <a href="https://www.linkedin.com/in/emmanuel-olajubu" target="_blank" class="btn-ghost small">LinkedIn →</a>
+          </div>
+        </div>
+        <div class="contact-form-wrap">
+          <form id="contact-form">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" placeholder="Your name" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" placeholder="your@email.com" required>
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" rows="5" placeholder="Tell me about the role or project..." required></textarea>
+            </div>
+            <button type="submit" class="btn-primary full-width">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <span class="nav-logo">EO<span class="dot">.</span></span>
+      <span class="mono small">© 2025 Emmanuel Olajubu — Ontario, Canada</span>
+      <div class="footer-links">
+        <a href="https://github.com/Theeyecode" target="_blank">GitHub</a>
+        <a href="https://www.linkedin.com/in/emmanuel-olajubu" target="_blank">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
-Show in sidebar
