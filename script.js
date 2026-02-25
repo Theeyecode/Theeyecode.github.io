@@ -13,9 +13,10 @@ document.getElementById('contact-form').addEventListener('submit', function(e) {
   btn.disabled = true;
 
   emailjs.send("service_dc0h1mq", "template_hopouep", {
-    from_name: name,
-    from_email: email,
-    message: message
+    name: name,
+    email: email,
+    message: message,
+    title: message.substring(0, 60)
   })
   .then(() => {
     btn.textContent = '✓ Message Sent';
