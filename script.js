@@ -28,7 +28,7 @@ document.getElementById('contact-form').addEventListener('submit', function(e) {
       btn.disabled = false;
     }, 4000);
   }, (error) => {
-    console.error('Failed to send:', error);
+    console.error('EmailJS error:', error);
     btn.textContent = 'Failed — Try Again';
     btn.style.background = '#e05555';
     btn.disabled = false;
@@ -46,7 +46,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     if (target) {
       e.preventDefault();
       target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      // close mobile menu if open
       document.getElementById('mobileMenu').classList.remove('open');
     }
   });
@@ -76,14 +75,12 @@ const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.classList.add('visible');
-      // apply to cards that don't have the reveal class
       entry.target.style.opacity = '1';
       entry.target.style.transform = 'translateY(0)';
     }
   });
 }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 
-// Apply initial hidden state and observe
 document.querySelectorAll('.project-card, .mobile-card, .timeline-item, .project-featured, .skills-block').forEach(el => {
   el.style.opacity = '0';
   el.style.transform = 'translateY(20px)';
