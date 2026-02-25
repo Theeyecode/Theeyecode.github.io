@@ -156,7 +156,7 @@ a { color: inherit; text-decoration: none; }
   background-size: 200px 200px;
 }
 
-.hero-content { position: relative; z-index: 1; max-width: 900px; }
+.hero-content { position: relative; z-index: 1; width: 100%; }
 
 .hero-badge {
   display: inline-flex; align-items: center; gap: 8px;
@@ -179,13 +179,12 @@ a { color: inherit; text-decoration: none; }
 }
 
 .hero-name {
-  font-size: clamp(2.4rem, 10vw, 8rem);
+  font-size: clamp(3rem, 7vw, 7.5rem);
   font-weight: 800;
   letter-spacing: -0.03em;
-  line-height: 1;
+  line-height: 1.05;
   margin-bottom: 1.5rem;
-  word-break: break-word;
-  overflow-wrap: break-word;
+  white-space: nowrap;
 }
 .hero-name .line { display: block; }
 
@@ -749,6 +748,11 @@ footer {
   .timeline { padding-left: 1.5rem; }
   .timeline-item::before { left: -1.75rem; }
   .hero-tagline { font-size: 0.95rem; }
+  .hero-name {
+    font-size: clamp(2.6rem, 11.5vw, 3.6rem);
+    white-space: normal;
+    letter-spacing: -0.02em;
+  }
 }
 
 @media (min-width: 601px) {
