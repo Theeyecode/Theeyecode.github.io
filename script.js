@@ -12,7 +12,7 @@ document.getElementById('contact-form').addEventListener('submit', function(e) {
   btn.textContent = 'Sending...';
   btn.disabled = true;
 
-  emailjs.send("service_dc0h1mq", "template_hopouep", {
+  emailjs.send("service_dc0h1mq", "template_oge6otw", {
     name: name,
     email: email,
     message: message,
