@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roamlii — Tourism Intelligence Platform | Emmanuel Olajubu</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;1,300&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --bg-2: #111111;
+      --bg-3: #181818;
+      --border: rgba(255,255,255,0.07);
+      --border-hover: rgba(255,255,255,0.15);
+      --text: #e8e6e0;
+      --text-muted: #888;
+      --text-dim: #555;
+      --accent: #e8c547;
+      --accent-dim: rgba(232,197,71,0.10);
+      --accent-border: rgba(232,197,71,0.3);
+      --green: #4ac9a0;
+      --green-dim: rgba(74,201,160,0.10);
+      --radius: 6px;
+      --radius-lg: 12px;
+      --transition: 0.3s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    p { color: #999; }
+    h1,h2,h3,h4 { font-family: 'Syne', sans-serif; line-height: 1.1; color: var(--text); }
+    .mono { font-family: 'DM Mono', monospace; font-size: 0.75rem; letter-spacing: 0.05em; color: var(--text-muted); }
+    .accent { color: var(--accent); }
+    .green { color: var(--green); }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 0 6%;
+      background: rgba(10,10,10,0.9);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px; max-width: 1100px; margin: 0 auto;
+    }
+    .nav-logo {
+      font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.3rem;
+    }
+    .nav-logo .dot { color: var(--accent); }
+    .nav-back {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-size: 0.85rem; color: var(--text-muted);
+      border: 1px solid var(--border); padding: 0.4rem 1rem;
+      border-radius: var(--radius);
+      transition: border-color var(--transition), color var(--transition);
+    }
+    .nav-back:hover { border-color: var(--border-hover); color: var(--text); }
+
+    /* HERO */
+    .case-hero {
+      padding: 140px 6% 80px;
+      max-width: 1100px; margin: 0 auto;
+      position: relative;
+    }
+    .hero-meta {
+      display: flex; align-items: center; gap: 1rem;
+      flex-wrap: wrap; margin-bottom: 2rem;
+    }
+    .tag {
+      font-family: 'DM Mono', monospace; font-size: 0.68rem;
+      letter-spacing: 0.05em; padding: 0.3rem 0.8rem;
+      border-radius: 20px;
+    }
+    .tag-green { background: var(--green-dim); color: var(--green); border: 1px solid rgba(74,201,160,0.25); }
+    .tag-yellow { background: var(--accent-dim); color: var(--accent); border: 1px solid var(--accent-border); }
+    .tag-gray { background: rgba(255,255,255,0.04); color: var(--text-muted); border: 1px solid var(--border); }
+
+    .case-title {
+      font-size: clamp(2.5rem, 6vw, 5.5rem);
+      font-weight: 800; letter-spacing: -0.03em;
+      margin-bottom: 1rem; line-height: 1;
+    }
+    .case-subtitle {
+      font-size: 1.15rem; color: #777; max-width: 680px;
+      margin-bottom: 3rem; line-height: 1.8;
+    }
+
+    /* STATS ROW */
+    .stats-row {
+      display: flex; gap: 0; flex-wrap: wrap;
+      border: 1px solid var(--border); border-radius: var(--radius-lg);
+      overflow: hidden; margin-bottom: 4rem;
+    }
+    .stat-box {
+      flex: 1; min-width: 140px;
+      padding: 1.8rem 2rem;
+      border-right: 1px solid var(--border);
+    }
+    .stat-box:last-child { border-right: none; }
+    .stat-box-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 2.2rem; font-weight: 800;
+      color: var(--green); line-height: 1; display: block;
+    }
+    .stat-box-label {
+      font-family: 'DM Mono', monospace; font-size: 0.65rem;
+      color: var(--text-muted); letter-spacing: 0.05em;
+      margin-top: 0.4rem; display: block;
+    }
+
+    /* BODY */
+    .case-body { max-width: 1100px; margin: 0 auto; padding: 0 6% 6rem; }
+
+    /* SECTION */
+    .case-section { margin-bottom: 5rem; }
+    .section-label {
+      font-family: 'DM Mono', monospace; font-size: 0.7rem;
+      color: var(--green); letter-spacing: 0.08em;
+      text-transform: uppercase; margin-bottom: 1rem;
+      display: flex; align-items: center; gap: 0.8rem;
+    }
+    .section-label::after {
+      content: ''; flex: 1; height: 1px;
+      background: linear-gradient(to right, rgba(74,201,160,0.3), transparent);
+    }
+    .case-section h2 {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 700; letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+    }
+    .case-section p { font-size: 1rem; color: #888; line-height: 1.85; margin-bottom: 1.2rem; }
+
+    /* TWO COL */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+
+    /* ARCH DIAGRAM */
+    .arch-box {
+      background: var(--bg-2); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 2.5rem;
+      position: relative; overflow: hidden;
+    }
+    .arch-box::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(to right, var(--green), var(--accent));
+    }
+
+    /* PIPELINE FLOW */
+    .pipeline {
+      display: flex; flex-direction: column; gap: 0;
+    }
+    .pipeline-step {
+      display: flex; align-items: flex-start; gap: 1.2rem;
+      padding: 1.2rem 0;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+    }
+    .pipeline-step:last-child { border-bottom: none; }
+    .step-num {
+      font-family: 'Syne', sans-serif; font-weight: 800;
+      font-size: 0.75rem; color: var(--green);
+      background: var(--green-dim); border: 1px solid rgba(74,201,160,0.2);
+      width: 28px; height: 28px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; margin-top: 2px;
+    }
+    .step-content h4 { font-size: 0.95rem; margin-bottom: 0.3rem; color: var(--text); }
+    .step-content p { font-size: 0.82rem; color: #666; line-height: 1.5; margin: 0; }
+
+    /* METRICS TABLE */
+    .metrics-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem; margin-top: 1.5rem;
+    }
+    .metric-card {
+      background: var(--bg-2); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.4rem 1.6rem;
+      transition: border-color var(--transition);
+    }
+    .metric-card:hover { border-color: var(--border-hover); }
+    .metric-val {
+      font-family: 'Syne', sans-serif; font-size: 1.8rem;
+      font-weight: 800; color: var(--green); line-height: 1; display: block;
+    }
+    .metric-val.yellow { color: var(--accent); }
+    .metric-desc {
+      font-family: 'DM Mono', monospace; font-size: 0.62rem;
+      color: var(--text-muted); letter-spacing: 0.04em;
+      margin-top: 0.4rem; display: block;
+    }
+
+    /* TECH STACK */
+    .tech-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; }
+    .tech-chip {
+      font-family: 'DM Mono', monospace; font-size: 0.68rem;
+      color: var(--text-muted); background: var(--bg-3);
+      border: 1px solid var(--border); padding: 0.3rem 0.8rem;
+      border-radius: 3px; transition: border-color var(--transition), color var(--transition);
+    }
+    .tech-chip:hover { border-color: var(--accent-border); color: var(--accent); }
+
+    /* CHALLENGE/SOLUTION CARDS */
+    .cs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1.5rem; }
+    .cs-card {
+      background: var(--bg-2); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 1.8rem;
+    }
+    .cs-card.challenge { border-top: 2px solid #e05555; }
+    .cs-card.solution { border-top: 2px solid var(--green); }
+    .cs-label {
+      font-family: 'DM Mono', monospace; font-size: 0.65rem;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      margin-bottom: 0.8rem; display: block;
+    }
+    .cs-card.challenge .cs-label { color: #e05555; }
+    .cs-card.solution .cs-label { color: var(--green); }
+    .cs-card h4 { font-size: 0.95rem; margin-bottom: 0.5rem; }
+    .cs-card p { font-size: 0.83rem; color: #666; line-height: 1.6; margin: 0; }
+
+    /* IMPACT LIST */
+    .impact-list { list-style: none; margin-top: 1.5rem; }
+    .impact-list li {
+      display: flex; align-items: flex-start; gap: 0.8rem;
+      padding: 0.9rem 0; border-bottom: 1px solid var(--border);
+      font-size: 0.92rem; color: #888;
+    }
+    .impact-list li:last-child { border-bottom: none; }
+    .impact-icon { color: var(--green); font-size: 0.9rem; margin-top: 2px; flex-shrink: 0; }
+
+    /* DRIVE GALLERY */
+    .drive-section {
+      background: var(--bg-2); border: 1px solid var(--border);
+      border-radius: var(--radius-lg); padding: 2.5rem;
+      margin-top: 1.5rem; text-align: center;
+    }
+    .drive-section h3 { font-size: 1.2rem; margin-bottom: 0.5rem; }
+    .drive-section p { font-size: 0.88rem; color: #666; margin-bottom: 1.5rem; }
+    .drive-links { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
+    .drive-btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-size: 0.875rem; font-weight: 500;
+      padding: 0.7rem 1.4rem; border-radius: var(--radius);
+      transition: var(--transition);
+    }
+    .drive-btn.primary {
+      background: var(--green); color: #0a0a0a; font-weight: 600;
+    }
+    .drive-btn.primary:hover { opacity: 0.9; transform: translateY(-1px); }
+    .drive-btn.ghost {
+      border: 1px solid var(--border); color: var(--text);
+    }
+    .drive-btn.ghost:hover { border-color: var(--border-hover); background: var(--bg-3); }
+
+    /* WEEK TIMELINE */
+    .week-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1rem; margin-top: 1.5rem;
+    }
+    .week-card {
+      background: var(--bg-2); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.2rem 1.4rem;
+    }
+    .week-num {
+      font-family: 'DM Mono', monospace; font-size: 0.62rem;
+      color: var(--accent); letter-spacing: 0.06em; display: block;
+      margin-bottom: 0.4rem;
+    }
+    .week-card h4 { font-size: 0.88rem; margin-bottom: 0.4rem; }
+    .week-card p { font-size: 0.78rem; color: #666; line-height: 1.5; margin: 0; }
+
+    /* FOOTER */
+    .case-footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 6%;
+    }
+    .case-footer-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 1rem;
+    }
+    .case-footer a {
+      font-size: 0.85rem; color: var(--text-muted);
+      border: 1px solid var(--border); padding: 0.5rem 1.2rem;
+      border-radius: var(--radius); transition: var(--transition);
+    }
+    .case-footer a:hover { color: var(--text); border-color: var(--border-hover); }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 768px) {
+      .two-col { grid-template-columns: 1fr; }
+      .cs-grid { grid-template-columns: 1fr; }
+      .stats-row { flex-direction: column; }
+      .stat-box { border-right: none; border-bottom: 1px solid var(--border); }
+      .stat-box:last-child { border-bottom: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-inner">
+      <span class="nav-logo">EO<span class="dot">.</span></span>
+      <a href="index.html" class="nav-back">← Back to Portfolio</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="case-hero">
+    <div class="hero-meta reveal">
+      <span class="tag tag-green">Featured · Production</span>
+      <span class="tag tag-yellow">Data Engineering</span>
+      <span class="tag tag-gray">Sep 2024 – Jan 2026</span>
+      <span class="tag tag-gray">Roamlii Adventures Inc. · Canada</span>
+    </div>
+    <h1 class="case-title reveal">Roamlii<span class="accent">.</span><br>Tourism Intelligence</h1>
+    <p class="case-subtitle reveal">
+      Built a cloud-native, fully automated data pipeline from scratch — ingesting tourism events, festivals, and sports data across North America into a production BigQuery analytics layer, powering dashboards and lead intelligence for the business.
+    </p>
+
+    <div class="stats-row reveal">
+      <div class="stat-box">
+        <span class="stat-box-num">98%</span>
+        <span class="stat-box-label">Extraction Accuracy</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-box-num">1,163</span>
+        <span class="stat-box-label">Events Discovered</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-box-num">60+</span>
+        <span class="stat-box-label">Event Sources</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-box-num">728</span>
+        <span class="stat-box-label">High-Value Leads</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-box-num">40%</span>
+        <span class="stat-box-label">Debug Time Reduced</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- BODY -->
+  <div class="case-body">
+
+    <!-- CONTEXT -->
+    <div class="case-section reveal">
+      <div class="section-label">01 · Context & Problem</div>
+      <div class="two-col">
+        <div>
+          <h2>Not just a scraper.<br>A data system.</h2>
+          <p>When I joined Roamlii, the brief sounded simple: "build a reliable scraper for tourism and event data." In reality, the problem was architectural. Each of 60+ source websites had different layouts, different bot rules, and different data quality. The team needed not just scripts but a coherent system — source verification, extraction logic, error handling, and a reliable path from raw HTML to structured analytics tables.</p>
+          <p>I took a lead role as a hands-on builder. Over 12 weeks, I evolved the project from "how do we scrape these sites?" to "how do we run an automated, auditable data pipeline that produces reliable tourism intelligence?"</p>
+        </div>
+        <div class="arch-box">
+          <div class="mono" style="margin-bottom:1.2rem; color: var(--green);">Three-Path Extraction Strategy</div>
+          <div class="pipeline">
+            <div class="pipeline-step">
+              <span class="step-num">1</span>
+              <div class="step-content">
+                <h4>Selector-Based Scraping</h4>
+                <p>Preferred path. CSS selectors + requests + BeautifulSoup for static sites. Fast, cost-efficient.</p>
+              </div>
+            </div>
+            <div class="pipeline-step">
+              <span class="step-num">2</span>
+              <div class="step-content">
+                <h4>Dynamic Extraction (Crawl4AI → Firecrawl)</h4>
+                <p>Browser-based rendering for dynamic/JS-heavy sites. Pivoted from Crawl4AI to Firecrawl after performance testing proved scalability concerns.</p>
+              </div>
+            </div>
+            <div class="pipeline-step">
+              <span class="step-num">3</span>
+              <div class="step-content">
+                <h4>LLM Fallback</h4>
+                <p>For irregular, unstructured layouts where selectors and rendering both fail. Last resort with schema enforcement on output.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ARCHITECTURE -->
+    <div class="case-section reveal">
+      <div class="section-label">02 · System Architecture</div>
+      <h2>End-to-end on GCP.<br>Zero manual intervention.</h2>
+      <p>The final system runs entirely on Google Cloud Platform. A Cloud Scheduler triggers Cloud Run Jobs every 3 days per category. Each job scrapes, validates, and writes structured JSONL to Cloud Storage. A BigQuery Data Transfer Service then loads to staging tables, scheduled MERGE queries deduplicate and promote to raw tables, and a unified view powers all dashboards.</p>
+
+      <div class="pipeline" style="margin-top:2rem;">
+        <div class="pipeline-step">
+          <span class="step-num">1</span>
+          <div class="step-content">
+            <h4>Cloud Scheduler → Cloud Run Jobs</h4>
+            <p>Separate jobs for Events (fast + slow), Festivals, and Sports. Docker containerized. 1–2hr timeout per run. Triggered every 3 days at 2AM.</p>
+          </div>
+        </div>
+        <div class="pipeline-step">
+          <span class="step-num">2</span>
+          <div class="step-content">
+            <h4>Cloud Storage (GCS)</h4>
+            <p>Structured output folders per category/timestamp. JSONL records, CSV backups, site metrics, failure artifacts, and run_report.json as the completion signal.</p>
+          </div>
+        </div>
+        <div class="pipeline-step">
+          <span class="step-num">3</span>
+          <div class="step-content">
+            <h4>Cloud Functions (Event-Driven)</h4>
+            <p>Triggered on run_report.json creation in GCS. Initiates BigQuery DTS load with distributed locking to prevent duplicate processing.</p>
+          </div>
+        </div>
+        <div class="pipeline-step">
+          <span class="step-num">4</span>
+          <div class="step-content">
+            <h4>BigQuery — Stage → Raw → Unified View</h4>
+            <p>DTS APPENDS to staging tables. Scheduled MERGE queries deduplicate and upsert to raw tables partitioned by run_date, clustered by province and site_name. UNION ALL unified view content_raw_all powers all reporting.</p>
+          </div>
+        </div>
+        <div class="pipeline-step">
+          <span class="step-num">5</span>
+          <div class="step-content">
+            <h4>Looker Studio + Power BI</h4>
+            <p>Real-time dashboards showing provincial coverage, city rankings, field completeness scores, and lead intelligence — directly querying the unified BigQuery view.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CHALLENGES -->
+    <div class="case-section reveal">
+      <div class="section-label">03 · Key Engineering Decisions</div>
+      <h2>Problems I solved.</h2>
+      <div class="cs-grid">
+        <div class="cs-card challenge">
+          <span class="cs-label">Challenge</span>
+          <h4>Crawl4AI didn't scale</h4>
+          <p>Slow render times, timeout issues, high credit consumption and variable output quality across 60+ sites made it unsustainable for multi-site, daily pipeline runs.</p>
+        </div>
+        <div class="cs-card solution">
+          <span class="cs-label">Solution</span>
+          <h4>Evidence-based pivot to Firecrawl</h4>
+          <p>Benchmarked both tools rigorously and presented data to the CEO. Firecrawl's caching, reliable navigation, and structured JSON support unlocked near-production stability.</p>
+        </div>
+        <div class="cs-card challenge">
+          <span class="cs-label">Challenge</span>
+          <h4>Multiple micro-services = deployment hell</h4>
+          <p>The original multi-service FastAPI + Redis + adapter stack was complex to maintain, slow to debug, and difficult to scale across new event categories.</p>
+        </div>
+        <div class="cs-card solution">
+          <span class="cs-label">Solution</span>
+          <h4>Single-runner Docker architecture</h4>
+          <p>Merged all services into one binary, one Docker image, one Cloud Run Job per category. Dramatically simplified deployment while enabling category-level targeting.</p>
+        </div>
+        <div class="cs-card challenge">
+          <span class="cs-label">Challenge</span>
+          <h4>Duplicate records from multiple sources</h4>
+          <p>60+ sites covering overlapping geographies created significant duplication in raw data, corrupting dashboard metrics and inflating event counts.</p>
+        </div>
+        <div class="cs-card solution">
+          <span class="cs-label">Solution</span>
+          <h4>MERGE + partitioning + clustering</h4>
+          <p>Implemented MERGE INTO logic keeping newest values, partitioned by run_date, clustered by province and site_name. Dramatically improved query performance and data accuracy.</p>
+        </div>
+        <div class="cs-card challenge">
+          <span class="cs-label">Challenge</span>
+          <h4>Events missing dates in dashboards</h4>
+          <p>Many listings stored dates as time_slots rather than explicit start/end dates, causing Looker Studio and Power BI to render broken timelines.</p>
+        </div>
+        <div class="cs-card solution">
+          <span class="cs-label">Solution</span>
+          <h4>SQL transformation for temporal normalization</h4>
+          <p>Wrote a SQL transformation that parsed time_slots fields into explicit start_date and end_date regardless of source format, fixing timelines and improving lead scoring accuracy.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- RESULTS -->
+    <div class="case-section reveal">
+      <div class="section-label">04 · Analytics Outputs & Results</div>
+      <h2>Real intelligence.<br>Real business value.</h2>
+      <p>By Week 12, the pipeline was operating end-to-end with zero manual intervention. The Looker Studio dashboard delivered nationwide tourism coverage with lead intelligence that directly feeds Roamlii's business development pipeline.</p>
+
+      <div class="metrics-grid">
+        <div class="metric-card">
+          <span class="metric-val">1,163</span>
+          <span class="metric-desc">Total Events Discovered</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-val">728</span>
+          <span class="metric-desc">High-Value Leads Identified</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-val">35.4%</span>
+          <span class="metric-desc">Contactable Lead Rate</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-val">55.8%</span>
+          <span class="metric-desc">Avg Field Completeness Score</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-val yellow">280</span>
+          <span class="metric-desc">Quebec Events (Top Province)</span>
+        </div>
+        <div class="metric-card">
+          <span class="metric-val yellow">162</span>
+          <span class="metric-desc">Montréal (Top City)</span>
+        </div>
+      </div>
+
+      <ul class="impact-list" style="margin-top:2rem;">
+        <li><span class="impact-icon">↗</span> Fully automated scraping → GCS → BigQuery pipeline — no manual steps from trigger to dashboard</li>
+        <li><span class="impact-icon">↗</span> 98% extraction accuracy achieved through modular Python adapters with strict schema validation</li>
+        <li><span class="impact-icon">↗</span> Nationwide coverage across all Canadian provinces — Quebec, Ontario, Alberta, BC and beyond</li>
+        <li><span class="impact-icon">↗</span> 85 contacts already made by Roamlii's business team using lead intelligence from the pipeline</li>
+        <li><span class="impact-icon">↗</span> Distributed locking + resume logic = pipeline reliability at scale with zero data duplication</li>
+      </ul>
+    </div>
+
+    <!-- TECH STACK -->
+    <div class="case-section reveal">
+      <div class="section-label">05 · Tech Stack</div>
+      <h2>What I built with.</h2>
+      <div class="tech-row">
+        <span class="tech-chip">Python</span>
+        <span class="tech-chip">GCP Cloud Run Jobs</span>
+        <span class="tech-chip">BigQuery</span>
+        <span class="tech-chip">BigQuery DTS</span>
+        <span class="tech-chip">Cloud Storage</span>
+        <span class="tech-chip">Cloud Functions</span>
+        <span class="tech-chip">Cloud Scheduler</span>
+        <span class="tech-chip">Secret Manager</span>
+        <span class="tech-chip">Docker</span>
+        <span class="tech-chip">Firecrawl</span>
+        <span class="tech-chip">SQL (MERGE / Partitioning)</span>
+        <span class="tech-chip">Looker Studio</span>
+        <span class="tech-chip">Power BI</span>
+        <span class="tech-chip">Google Sheets (Control Plane)</span>
+        <span class="tech-chip">Redis (Distributed Locking)</span>
+        <span class="tech-chip">YAML Config Architecture</span>
+        <span class="tech-chip">CI/CD (Artifact Registry)</span>
+      </div>
+    </div>
+
+    <!-- WEEK BY WEEK -->
+    <div class="case-section reveal">
+      <div class="section-label">06 · 12-Week Build Log</div>
+      <h2>Week by week.</h2>
+      <div class="week-grid">
+        <div class="week-card">
+          <span class="week-num">Week 1–2</span>
+          <h4>Verification & Architecture</h4>
+          <p>Built site verification checklist. Designed three-path extraction strategy. Set up project structure and branch workflow.</p>
+        </div>
+        <div class="week-card">
+          <span class="week-num">Week 3</span>
+          <h4>Crawl4AI Adapter</h4>
+          <p>Built dynamic crawling adapter with navigation, waits, pagination, structured logging, and UML failover diagram.</p>
+        </div>
+        <div class="week-card">
+          <span class="week-num">Week 4</span>
+          <h4>Firecrawl Pivot</h4>
+          <p>Benchmarked Crawl4AI vs Firecrawl. Presented evidence to CEO. Recommended and approved pivot to Firecrawl.</p>
+        </div>
+        <div class="week-card">
+          <span class="week-num">Week 5</span>
+          <h4>Single-Runner + Docker</h4>
+          <p>Merged all services into one runner. Containerized with Docker. Deployed as Cloud Run Jobs per category.</p>
+        </div>
+        <div class="week-card">
+          <span class="week-num">Week 6</span>
+          <h4>Cloud Run + GCS Output</h4>
+          <p>Deployed category-based Cloud Run Jobs. Standardized outputs: JSONL, CSV, logs, site metrics, run_report.json.</p>
+        </div>
+        <div class="week-card">
+          <span class="week-num">Week 7</span>
+          <h4>BigQuery Ingestion</h4>
+          <p>Stage → raw transformations via DTS + MERGE. Partitioning by run_date. Clustering by province and site_name.</p>
+        </div>
+        <div class="week-card">
+          <span class="week-num">Week 8</span>
+          <h4>Resilience & Error Handling</h4>
+          <p>Checkpointing + retry/backoff strategies. Pipeline can resume from partial failures without data loss.</p>
+        </div>
+        <div class="week-card">
+          <span class="week-num">Week 9</span>
+          <h4>Site Governance</h4>
+          <p>Implemented new → dev → production source lifecycle via Google Sheets control plane.</p>
+        </div>
+        <div class="week-card">
+          <span class="week-num">Week 10</span>
+          <h4>Security & Docs</h4>
+          <p>Migrated API keys to Secret Manager. Updated cloud architecture diagrams for the full team.</p>
+        </div>
+        <div class="week-card">
+          <span class="week-num">Week 11</span>
+          <h4>Cloud Functions Automation</h4>
+          <p>Event-driven DTS trigger via run_report.json detection. Distributed locking prevents duplicate BigQuery runs.</p>
+        </div>
+        <div class="week-card">
+          <span class="week-num">Week 12</span>
+          <h4>Temporal Fix + Validation</h4>
+          <p>Fixed time_slots → start_date/end_date. Full end-to-end pipeline validated. Dashboards confirmed operational.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- DRIVE LINKS -->
+    <div class="case-section reveal">
+      <div class="section-label">07 · Project Artifacts</div>
+      <h2>See the work.</h2>
+      <p>Due to client confidentiality, direct access to the production dashboard is restricted. The Google Drive folder below contains architecture diagrams, Looker Studio screenshots, and my submitted internship report.</p>
+      <div class="drive-section">
+        <h3>Project Documentation & Visuals</h3>
+        <p>Architecture diagrams · Looker Studio screenshots · Full internship report</p>
+        <div class="drive-links">
+          <a href="https://drive.google.com/drive/folders/1juEmgFNIcWSyjw7w94B1TWeOhxoI7uao?usp=drive_link" target="_blank" class="drive-btn primary">
+            📁 View Google Drive Folder
+          </a>
+          <a href="https://drive.google.com/file/d/1BBolGDe-uvQpWKqSYnleOHCKhYELeEQ0/view?usp=sharing" target="_blank" class="drive-btn ghost">
+            📄 Read Full Internship Report
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="case-footer">
+    <div class="case-footer-inner">
+      <span class="nav-logo">EO<span class="dot">.</span></span>
+      <a href="index.html">← Back to all projects</a>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 60);
+        }
+      });
+    }, { threshold: 0.07 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
